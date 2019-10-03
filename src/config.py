@@ -28,5 +28,8 @@ app_config = {
 }
 
 # $Env:FLASK_ENV="development"
+# export FLASK_ENV="development"
 # $Env:DATABASE_URL= "sqlite:////tmp/test87.db"
+# export DATABASE_URL="sqlite:////tmp/test87.db"
 # $Env:JWT_SECRET_KEY = "87"
+# export JWT_SECRET_KEY="87"

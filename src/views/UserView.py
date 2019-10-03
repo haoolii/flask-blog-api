@@ -30,7 +30,7 @@ def create():
   user = UserModel(data)
   user.save()
 
-  ser_data = user_schema.dump(user).data
+  ser_data = user_schema.dump(user)
 
   token = Auth.generate_token(ser_data.get('id'))
 
@@ -40,7 +40,7 @@ def create():
 @Auth.auth_required
 def get_all():
   users = UserModel.get_all_users()
-  ser_users = user_schema.dump(users, many=True).data
+  ser_users = user_schema.dump(users, many=True)
   return custom_response(ser_users, 200)
 
 @user_api.route('/login', methods=['POST'])
@@ -62,7 +62,7 @@ def login():
   if not user.check_hash(data.get('password')):
     return custom_response({'error': 'invalid credentials'}, 400)
   
-  ser_data = user_schema.dump(user).data
+  ser_data = user_schema.dump(user)
   
   token = Auth.generate_token(ser_data.get('id'))
 
